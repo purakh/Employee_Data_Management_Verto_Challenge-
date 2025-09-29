@@ -78,8 +78,7 @@ Steps to Test the APIs:
 
 You can run the tests using Maven:
 
-```bash
-mvn test
+Terminal: mvn test
 
 
 📝 Assumptions & Design Choices
