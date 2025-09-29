@@ -1,61 +1,127 @@
-Full Stack Employee Management System – Angular, Spring Boot & MySQL
+Employee Management System
 
-Employee Management System (EMS) is a full-stack web application developed to make employee data handling simpler and more optimized in an organization. It offers a methodical approach to adding, handling, and maintaining employee information via an interactive user interface and a robust backend.
+An Employee Management System built with Spring Boot (backend) and Angular (frontend).
+This project allows you to perform full CRUD operations (Create, Read, Update, Delete) on employees.
 
-Tech Stack:
+🚀 Core Features :
 
-Backend:
+Add new employees
 
-Spring Boot: A light, yet highly capable Java framework that drives the server-side logic and API layer. It provides scalability, modularity, and effortless integration with databases.
+View all employees
 
-MySQL: Relational database management system employed to store and manage employee records securely with excellent data consistency.
+View employee details
 
-Frontend:
+Update employee information
 
-Angular: Advanced client-side framework providing a responsive, component-based, and interactive user interface.
+Delete employees
 
-Features Overview :
+SQLite database
 
-(Home Page): Serves as the main entry point with fast access and uncluttered overview of system operations.
+Search Employee by name and Id
 
-<img src="Screenshots/Screenshot1.png" alt="Employee List" width="600"/>
+REST API backend with Angular frontend
 
-Employee Directory:
+⚙️ Setup Instructions
 
-<img src="Screenshots/Screenshot2.png" alt="Employee List" width="600"/>
+1. Clone the repository
+git clone https://github.com/purakh/Employee_Data_Management_Verto_Challenge-.git
+cd employee-management-system
 
-Produces an entire list of employees. Data can be searched, filtered, and sorted for easy access.
+2. Backend Setup (Spring Boot)
+cd edm_backend
+mvn clean install
+mvn spring-boot:run
 
-Add New Employee:
+Backend runs on: http://localhost:8080
 
-<img src="Screenshots/Screenshot3.png" alt="Employee List" width="600"/>
+3. Frontend Setup (Angular)
+cd edm_frontend
+npm install
+ng serve
 
-Features a form with validation rules to record new employee information correctly.
 
-CRUD Operations
+Frontend runs on: http://localhost:4200
 
-Execute basic operations like employee record creation, viewing, editing, and deletion.
+🧪 Testing
 
-Validation System
+I have used manual testing via Postman to verify the backend APIs. No automated test cases are included, but the default Angular and Spring Boot test files remain for reference.
 
-Maintains proper data entry so that records are consistent and free of errors.
+Steps to Test the APIs:
 
-⚙️ Backend :
+Start the Backend
 
-Executes business logic, processes requests, and communicates with the database.
+mvn spring-boot:run
 
-RESTful APIs designed with Spring Boot ensure seamless client-server communication.
+The backend will run on: http://localhost:8080
 
-Is optimized for maintainability and scalability to match organizational growth requirements.
+Test with Postman
+Open Postman and test the following endpoints:
 
-Frontend:
+Method	        Endpoint	                    Description
 
-Angular drives an uncluttered, modular interface with reusable components.
+GET	        /api/v1/employees	                Fetch all employees
+GET	        /api/v1/employees/{id}	            Fetch an employee by ID
+POST	    /api/v1/employees	                Add a new employee (send JSON body)
+PUT	        /api/v1/employees/{id}	            Update an existing employee (send JSON body)
+DELETE	    /api/v1/employees/{id}	            Delete an employee
 
-Two-way data binding enables real-time updates.
 
-Responsive design makes it compatible on any device.
+Verify Responses and ensure that:
 
-Conclusion:
+200 OK responses are returned for successful GET, PUT, DELETE requests.
+201 Created for successful POST requests.
+The response JSON matches the expected data.
 
-The Employee Management System is an end-to-end solution for managing workforce information in an efficient way. Through the use of Spring Boot, Angular, and MySQL, the system offers a safe, efficient, and user-friendly interface that can grow with organizational needs.
+
+📝 Assumptions & Design Choices
+
+Database: Used SQLite for easy local development (file-based DB, no setup required).
+
+API Design: REST API under /api/v1/employees.
+
+CORS: Configured to allow requests from Angular frontend (http://localhost:4200).
+
+Simplification: No authentication/authorization implemented (assumed single-user application).
+                Kept Authentication and admin login for future upgradtion.
+
+UI Framework: Used Bootstrap for styling and layout.
+
+📸 Screenshots
+Frontend – Home Page
+<img src="Screenshots/home_page.png" alt="Get Employees" width="600"/>
+
+Employee list:
+<img src="Screenshots/employee_list.png" alt="Get Employees" width="600"/>
+
+Add Employee:
+<img src="Screenshots/add_employee.png" alt="Get Employees" width="600"/>
+
+Employee Profile view:
+<img src="Screenshots/employee_view.png" alt="Get Employees" width="600"/>
+
+Database (DB Browser for SQLite):
+<img src="Screenshots/DB.png" alt="Get Employees" width="600"/>
+
+📂 Project Structure
+employee-management-system/
+│
+├── edm_backend/         # Spring Boot Backend
+│   ├── src/main/java/com/example/demo/
+│   ├── src/main/resources/application.properties
+│   └── pom.xml
+│
+├── edm_frontend/        # Angular Frontend
+│   ├── src/app/
+│   ├── src/assets/
+│   └── package.json
+│
+├── screenshots/         # Screenshots folder
+│   
+│
+└── README.md
+
+👨‍💻 Author
+
+Purushottam Singh
+Email: purakhsingh108@gmail.com
+GitHub: [purakh](https://github.com/purakh)

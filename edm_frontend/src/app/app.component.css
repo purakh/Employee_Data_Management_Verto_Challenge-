@@ -1,0 +1,47 @@
+/* 🔹 Navbar styling */
+.navbar {
+  background-color: #1c1c3e; /* dark blue */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-size: 2rem; 
+  padding: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* soft shadow */
+}
+
+/* 🔹 Nav item links */
+.nav-item {
+  color: #f5f5f5;
+  margin-left: 2rem;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #00bcd4; /* teal on hover */
+  transform: translateY(-2px); /* slight lift */
+}
+
+/* 🔹 Logout option (hidden by default) */
+.logout-option {
+  display: none;
+  background: #e53935; /* red background */
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  transition: background 0.3s ease;
+}
+
+.nav-item:hover .logout-option {
+  display: inline-block;
+}
+
+.logout-option:hover {
+  background: #c62828; /* darker red on hover */
+}
