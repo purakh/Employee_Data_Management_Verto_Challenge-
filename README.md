@@ -14,6 +14,7 @@ This project allows you to perform full CRUD operations (Create, Read, Update, D
 - Delete employees
 - SQLite database
 - Search Employee by name and Id
+- Form validation
 - REST API backend with Angular frontend
 
 ---
