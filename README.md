@@ -61,7 +61,7 @@ Method	        Endpoint	                    Description
 
 GET	        /api/v1/employees	                Fetch all employees
 GET	        /api/v1/employees/{id}	            Fetch an employee by ID
-POST	    /api/v1/employees	                Add a new employee (send JSON body)
+POST	      /api/v1/employees	                Add a new employee (send JSON body)
 PUT	        /api/v1/employees/{id}	            Update an existing employee (send JSON body)
 DELETE	    /api/v1/employees/{id}	            Delete an employee
 
