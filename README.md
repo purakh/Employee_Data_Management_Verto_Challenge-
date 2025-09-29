@@ -93,7 +93,8 @@ Employee Profile view:
 Database (DB Browser for SQLite):
 <img src="Screenshots/DB.png" alt="Get Employees" width="600"/>
 
-```📂 Project Structure
+```
+📂 Project Structure
 employee-management-system/
 │
 ├── edm_backend/         # Spring Boot Backend
