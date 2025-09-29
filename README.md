@@ -43,7 +43,7 @@ Frontend runs on: http://localhost:4200
 
 🧪 Testing
 
-I have used manual testing via Postman to verify the backend APIs. No automated test cases are included, but the default Angular and Spring Boot test files remain for reference.
+I have used manual testing via **Postman** to verify the backend APIs and also included unit and integration tests for the `EmployeeController` using **JUnit 5** and **Mockito**.
 
 Steps to Test the APIs:
 
@@ -67,6 +67,19 @@ Steps to Test the APIs:
 - 200 OK responses are returned for successful GET, PUT, DELETE requests.
 - 201 Created for successful POST requests.
 - The response JSON matches the expected data.
+
+**unit and integration tests** for the `EmployeeController` using **JUnit 5** and **Mockito**. The tests cover:
+
+- Retrieving all employees (`testGetAllEmployees`)
+- Retrieving a single employee by ID (`testGetEmployeeById`)
+- Creating a new employee (`testCreateEmployee`)
+- Updating an existing employee (`testUpdateEmployee`)
+- Deleting an employee (`testDeleteEmployee`)
+
+You can run the tests using Maven:
+
+```bash
+mvn test
 
 
 📝 Assumptions & Design Choices
