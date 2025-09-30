@@ -43,7 +43,7 @@ Frontend runs on: http://localhost:4200
 
 🧪 Testing
 
-I have used manual testing via **Postman** to verify the backend APIs and also included unit and integration tests for the `EmployeeController` using **JUnit 5** and **Mockito**.
+I have used manual testing via **Postman** to verify the backend APIs and also included unit and integration tests using **JUnit 5** and **Mockito**.
 
 Steps to Test the APIs:
 
@@ -68,13 +68,26 @@ Steps to Test the APIs:
 - 201 Created for successful POST requests.
 - The response JSON matches the expected data.
 
-**unit and integration tests** for the `EmployeeController` using **JUnit 5** and **Mockito**. The tests cover:
 
-- Retrieving all employees (`testGetAllEmployees`)
-- Retrieving a single employee by ID (`testGetEmployeeById`)
-- Creating a new employee (`testCreateEmployee`)
-- Updating an existing employee (`testUpdateEmployee`)
-- Deleting an employee (`testDeleteEmployee`)
+**unit and integration tests** for both the **EmployeeController** and **EmployeeService** using **JUnit 5** and **Mockito**. These tests ensure that the API endpoints and business logic behave as expected.
+
+### Controller Tests
+The `EmployeeControllerTest` covers:
+
+- **Retrieving all employees** (`testGetAllEmployees`)
+- **Retrieving a single employee by ID** (`testGetEmployeeById`)
+- **Creating a new employee** (`testCreateEmployee`)
+- **Updating an existing employee** (`testUpdateEmployee`)
+- **Deleting an employee** (`testDeleteEmployee`)
+
+### Service Tests
+The `EmployeeServiceTest` covers:
+
+- **Retrieving all employees**
+- **Retrieving a single employee by ID** (including exception handling)
+- **Creating a new employee**
+- **Updating an existing employee**
+- **Deleting an employee**
 
 You can run the tests using Maven:
 

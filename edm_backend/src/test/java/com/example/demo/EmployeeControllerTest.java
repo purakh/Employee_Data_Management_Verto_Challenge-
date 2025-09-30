@@ -1,25 +1,23 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Employee;
-import com.example.demo.repository.EmployeeRepository;
+import com.example.demo.service.EmployeeService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Optional;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -30,7 +28,7 @@ public class EmployeeControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private EmployeeRepository employeeRepository;
+    private EmployeeService employeeService; // Mock the service layer
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -44,15 +42,16 @@ public class EmployeeControllerTest {
         employee1.setFname("John");
         employee1.setLname("Doe");
         employee1.setEmail("john.doe@example.com");
-        employee1.setSalary(50000L); 
+        employee1.setSalary(50000L);
         employee1.setDepartment("IT");
         employee1.setDesignation("Developer");
-        employee1.setJoiningDate(LocalDate.parse("2023-01-01")); 
+        employee1.setJoiningDate(LocalDate.parse("2023-01-01"));
     }
 
     @Test
     void testGetAllEmployees() throws Exception {
-        when(employeeRepository.findAll()).thenReturn(Arrays.asList(employee1));
+        List<Employee> employees = Arrays.asList(employee1);
+        Mockito.when(employeeService.getAllEmployees()).thenReturn(employees);
 
         mockMvc.perform(get("/api/v1/employees"))
                 .andExpect(status().isOk())
@@ -61,7 +60,7 @@ public class EmployeeControllerTest {
 
     @Test
     void testGetEmployeeById() throws Exception {
-        when(employeeRepository.findById(1L)).thenReturn(Optional.of(employee1));
+        Mockito.when(employeeService.getEmployeeById(1L)).thenReturn(employee1);
 
         mockMvc.perform(get("/api/v1/employees/1"))
                 .andExpect(status().isOk())
@@ -70,7 +69,7 @@ public class EmployeeControllerTest {
 
     @Test
     void testCreateEmployee() throws Exception {
-        when(employeeRepository.save(any(Employee.class))).thenReturn(employee1);
+        Mockito.when(employeeService.saveEmployee(any(Employee.class))).thenReturn(employee1);
 
         mockMvc.perform(post("/api/v1/employees")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -81,10 +80,8 @@ public class EmployeeControllerTest {
 
     @Test
     void testUpdateEmployee() throws Exception {
-        when(employeeRepository.findById(1L)).thenReturn(Optional.of(employee1));
-        when(employeeRepository.save(any(Employee.class))).thenReturn(employee1);
-
-        employee1.setFname("Jane");
+        employee1.setFname("Jane"); // update value
+        Mockito.when(employeeService.updateEmployee(anyLong(), any(Employee.class))).thenReturn(employee1);
 
         mockMvc.perform(put("/api/v1/employees/1")
                         .contentType(MediaType.APPLICATION_JSON)
@@ -95,7 +92,7 @@ public class EmployeeControllerTest {
 
     @Test
     void testDeleteEmployee() throws Exception {
-        when(employeeRepository.findById(1L)).thenReturn(Optional.of(employee1));
+        Mockito.doNothing().when(employeeService).deleteEmployee(1L);
 
         mockMvc.perform(delete("/api/v1/employees/1"))
                 .andExpect(status().isOk())
