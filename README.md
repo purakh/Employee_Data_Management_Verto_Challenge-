@@ -1,6 +1,6 @@
 # Employee Data Management
 
-An Employee Management System built with **Spring Boot** (backend) and **Angular** (frontend).  
+An Employee Data Management built with **Spring Boot** (backend) and **Angular** (frontend).  
 This project allows you to perform full CRUD operations (Create, Read, Update, Delete) on employees.
 
 ---
